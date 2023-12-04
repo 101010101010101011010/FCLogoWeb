@@ -18,7 +18,7 @@
 
   <body style="background-color:#1c87c9;">
     <div id="loader"></div>
-    <div id="container" style="height:100%; width:100%;"></div>
+    <div id="container"></div>
     <script type="module">
       import * as THREE from 'three';
       import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -28,9 +28,11 @@
       const fps = 24;
       const motionMultiplier = 0.5;
 
+      const ratio = 19/10;
+
       const scene = new THREE.Scene();
       scene.background = new THREE.Color( 0x3B4C43 );
-      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+      const camera = new THREE.PerspectiveCamera( 75, ratio, 0.1, 1000 );
 
 
       const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -44,22 +46,23 @@
         gltf.scene.name = "FCLogo"
         scene.add( gltf.scene );
 
-        const spotLight1 = new THREE.SpotLight( 0xffffff, 10 );
+        const spotLight1 = new THREE.SpotLight( 0xffffff, 20 );
         spotLight1.position.set( 6, 1, 1 );
         spotLight1.lookAt( 0, 0, 0 )
         scene.add( spotLight1 );
 
-        const spotLight2 = new THREE.SpotLight( 0xffffff, 10 );
+        const spotLight2 = new THREE.SpotLight( 0xffffff, 20 );
         spotLight2.position.set( -6, 1, 1 );
         spotLight2.lookAt( 0, 0, 0 )
         scene.add( spotLight2 );
 
-        const spotLight3 = new THREE.SpotLight( 0xffffff, 5 );
+        const spotLight3 = new THREE.SpotLight( 0xffffff, 10 );
         spotLight3.position.set( 0, -4, 1 );
         spotLight3.lookAt( 0, 0, 0 )
         scene.add( spotLight3 );
 
-        camera.position.z = 2;
+        camera.position.z = 1.2;
+        camera.position.y = 0.05;
 
         camera.updateProjectionMatrix();
 
@@ -80,8 +83,8 @@
       }
 
       window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
+        renderer.setSize(window.innerHeight * ratio, window.innerHeight);
+        camera.aspect = ratio;
         camera.updateProjectionMatrix();
       })
 
