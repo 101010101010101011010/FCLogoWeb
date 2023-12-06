@@ -96,7 +96,7 @@
         xSize = window.innerWidth;
         ySize = window.innerHeight;
 
-        if (ratio > xSize/Syize) { // XSize is the larger one, so YSize is the limit size
+        if (ratio > xSize/ ySize) { // XSize is the larger one, so YSize is the limit size
           xSize = ySize * ratio;
           return;
         }
