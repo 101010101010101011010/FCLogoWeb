@@ -79,9 +79,9 @@
       } );
 
       onmousemove = function(e){
-        const mouseX = (e.clientX / window.innerWidth ) * 2 - 1;
+        /*const mouseX = (e.clientX / window.innerWidth ) * 2 - 1;
         const mouseY = (e.clientY / window.innerHeight ) * -2 + 1;
-        scene.getObjectByName("FCLogo").lookAt( mouseX * motionMultiplier, mouseY * motionMultiplier, 1)
+        scene.getObjectByName("FCLogo").lookAt( mouseX * motionMultiplier, mouseY * motionMultiplier, 1)*/
       }
 
       window.addEventListener('resize', () => {
@@ -117,6 +117,10 @@
         setTimeout( function() {
           requestAnimationFrame( animate );
         }, 1000 / fps );
+
+        const mouseX = (e.clientX / window.innerWidth ) * 2 - 1;
+        const mouseY = (e.clientY / window.innerHeight ) * -2 + 1;
+        scene.getObjectByName("FCLogo").lookAt( mouseX * motionMultiplier, mouseY * motionMultiplier, 1)
 
         renderer.render( scene, camera );
       }
