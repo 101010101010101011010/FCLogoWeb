@@ -49,17 +49,17 @@
         gltf.scene.name = "FCLogo"
         scene.add( gltf.scene );
 
-        const spotLight1 = new THREE.SpotLight( 0xffffff, 40 );
+        const spotLight1 = new THREE.SpotLight( 0xffffff, 80 );
         spotLight1.position.set( 6, 1, 1 );
         spotLight1.lookAt( 0, 0, 0 )
         scene.add( spotLight1 );
 
-        const spotLight2 = new THREE.SpotLight( 0xffffff, 40 );
+        const spotLight2 = new THREE.SpotLight( 0xffffff, 80 );
         spotLight2.position.set( -6, 1, 1 );
         spotLight2.lookAt( 0, 0, 0 )
         scene.add( spotLight2 );
 
-        const spotLight3 = new THREE.SpotLight( 0xffffff, 20 );
+        const spotLight3 = new THREE.SpotLight( 0xffffff, 40 );
         spotLight3.position.set( 0, -4, 1 );
         spotLight3.lookAt( 0, 0, 0 )
         scene.add( spotLight3 );
