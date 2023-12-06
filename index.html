@@ -79,6 +79,7 @@
       } );
 
       onmousemove = function(e){
+        console.log("aaa");
         const mouseX = (e.clientX / window.innerWidth ) * 2 - 1;
         const mouseY = (e.clientY / window.innerHeight ) * -2 + 1;
         scene.getObjectByName("FCLogo").lookAt( mouseX * motionMultiplier, mouseY * motionMultiplier, 1)
@@ -117,8 +118,6 @@
         setTimeout( function() {
           requestAnimationFrame( animate );
         }, 1000 / fps );
-
-        onmousemove();
 
         renderer.render( scene, camera );
       }
