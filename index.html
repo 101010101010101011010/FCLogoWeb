@@ -29,14 +29,17 @@
       const motionMultiplier = 0.5;
 
       const ratio = 19/10;
+      var xSize
+      var ySize
 
       const scene = new THREE.Scene();
       scene.background = new THREE.Color( 0x3B4C43 );
       const camera = new THREE.PerspectiveCamera( 75, ratio, 0.1, 1000 );
 
 
+      windowResize();
       const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(xSize, ySize);
       renderer.gammaOutput = true;
       document.getElementById("container").appendChild( renderer.domElement );
 
@@ -83,10 +86,24 @@
       }
 
       window.addEventListener('resize', () => {
-        renderer.setSize(window.innerHeight * ratio, window.innerHeight);
+        windowResize();
+        renderer.setSize(xSize, ySize);
         camera.aspect = ratio;
         camera.updateProjectionMatrix();
       })
+
+      function windowResize() {
+        xSize = window.innerWidth;
+        ySize = window.innerHeight;
+
+        if (ratio > xSize/Syize) { // XSize is the larger one, so YSize is the limit size
+          xSize = ySize * ratio;
+          return;
+        }
+
+        ySize = xSize / ratio;
+        return;
+      }
 
       function showScene() {
         document.getElementById("loader").style.visibility = "collapse";
